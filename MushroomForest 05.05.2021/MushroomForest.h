@@ -43,16 +43,26 @@ void build_sieve_primes(unsigned long long max_x_y, unsigned long long max_x, un
     Sum_till_index[1] = 1;
     for (unsigned long long i = 2; i < max_x_y; i++)
     {
-        for (unsigned long long j = 2; j <= i; j++)
+        if (Raw_sew[i] == 0)
         {
-            if (Raw_sew[j] == 1 && i % j == 0)
-                if (Min_prime_divisor[i] == 0)
-                {
-                    if (i < max_x) Min_prime_divisor[i] = j;
-                    if (i < max_y) Max_prime_divisor[i] = j;
-                }
-                else
-                    if (i < max_y) Max_prime_divisor[i] = j;
+            for (unsigned long long j = 2; j <= i; j++)
+            {
+                if (Raw_sew[j] == 1 && i % j == 0)
+                    if (Min_prime_divisor[i] == 0)
+                    {
+                        if (i < max_x) Min_prime_divisor[i] = j;
+                        if (i < max_y) Max_prime_divisor[i] = j;
+                    }
+                    else
+                        if (i < max_y) Max_prime_divisor[i] = j;
+            }
+        }
+        else
+        {
+            // ≈сли ещЄ не вышли за границу леса по x, то записываем минимальный простой делитель числа i.
+            if (i < max_x) Min_prime_divisor[i] = i;
+            // ≈сли ещЄ не вышли за границу леса по y, то записываем максимальны простой делитель числа i.
+            if (i < max_y) Max_prime_divisor[i] = i;
         }
         if(max_y > max_x)
             Sum_till_index[i] = Sum_till_index[i - 1] + Max_prime_divisor[i];
