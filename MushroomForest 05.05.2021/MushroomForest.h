@@ -5,50 +5,50 @@
 #include <ctime>
 using namespace std;
 
-unsigned char* raw_sew = NULL;
+unsigned char* Raw_sew = NULL;
 unsigned long long Max_x_y = 0;
-unsigned long long* min_prime_divisor = NULL;
+unsigned long long* Min_prime_divisor = NULL;
 unsigned long long* Max_prime_divisor = NULL;
 unsigned long long* Sum_till_index = NULL;
 
 void build_sieve_raw(unsigned long long max_x_y)
 {
-    if (raw_sew != NULL) return;
-    raw_sew = new unsigned char[max_x_y];
+    if (Raw_sew != NULL) return;
+    Raw_sew = new unsigned char[max_x_y];
     for (unsigned long long i = 0; i < max_x_y; i++)
-        raw_sew[i] = 1;
-    raw_sew[0] = 0;
-    raw_sew[1] = 0;
+        Raw_sew[i] = 1;
+    Raw_sew[0] = 0;
+    Raw_sew[1] = 0;
     for (unsigned long long k = 0; k * k < max_x_y; k++)
-        if (raw_sew[k] == 1)
+        if (Raw_sew[k] == 1)
             for (unsigned long long p = 2 * k; p < max_x_y; p += k)
-                raw_sew[p] = 0;
+                Raw_sew[p] = 0;
 }
 
 // TODO: ѕодумать, как избавитс€ от вложенных циклов.
 void build_sieve_primes(unsigned long long max_x_y, unsigned long long max_x, unsigned long long max_y)
 {
-    if (min_prime_divisor != NULL || Max_prime_divisor != NULL) return;
-    min_prime_divisor = new unsigned long long[max_x_y];
+    if (Min_prime_divisor != NULL || Max_prime_divisor != NULL) return;
+    Min_prime_divisor = new unsigned long long[max_x_y];
     Max_prime_divisor = new unsigned long long[max_x_y];
     Sum_till_index = new unsigned long long[max_x_y];
     for (unsigned long long i = 0; i < max_x_y; i++)
-        min_prime_divisor[i] = 0;
+        Min_prime_divisor[i] = 0;
     for (unsigned long long i = 0; i < max_x; i++)
         Max_prime_divisor[i] = 0;
     for (unsigned long long i = 0; i < max_y; i++)
         Sum_till_index[i] = 0;
-    min_prime_divisor[1] = 1;
+    Min_prime_divisor[1] = 1;
     Max_prime_divisor[1] = 1;
     Sum_till_index[1] = 1;
     for (unsigned long long i = 2; i < max_x_y; i++)
     {
         for (unsigned long long j = 2; j <= i; j++)
         {
-            if (raw_sew[j] == 1 && i % j == 0)
-                if (min_prime_divisor[i] == 0)
+            if (Raw_sew[j] == 1 && i % j == 0)
+                if (Min_prime_divisor[i] == 0)
                 {
-                    if (i < max_x) min_prime_divisor[i] = j;
+                    if (i < max_x) Min_prime_divisor[i] = j;
                     if (i < max_y) Max_prime_divisor[i] = j;
                 }
                 else
@@ -57,7 +57,7 @@ void build_sieve_primes(unsigned long long max_x_y, unsigned long long max_x, un
         if(max_y > max_x)
             Sum_till_index[i] = Sum_till_index[i - 1] + Max_prime_divisor[i];
         else
-            Sum_till_index[i] = Sum_till_index[i - 1] + min_prime_divisor[i];
+            Sum_till_index[i] = Sum_till_index[i - 1] + Min_prime_divisor[i];
     }
 }
 
@@ -113,7 +113,7 @@ void mushroom_forest(const char* file_name_for_analysis, const char* file_name_f
         {
             max_prime_divisor_sum_till_index_current = Sum_till_index[queries_y[i]];
             for (unsigned long long j = 1; j <= queries_x[i]; j++)
-                summa_division_min_prime_devision += max_prime_divisor_sum_till_index_current * min_prime_divisor[j];
+                summa_division_min_prime_devision += max_prime_divisor_sum_till_index_current * Min_prime_divisor[j];
         }
         else
         {
@@ -129,8 +129,8 @@ void mushroom_forest(const char* file_name_for_analysis, const char* file_name_f
     }
     if (queries_x != NULL) delete[] queries_x;
     if (queries_y != NULL) delete[] queries_y;
-    if (raw_sew != NULL) delete[] raw_sew;
-    if (min_prime_divisor != NULL) delete[] min_prime_divisor;
+    if (Raw_sew != NULL) delete[] Raw_sew;
+    if (Min_prime_divisor != NULL) delete[] Min_prime_divisor;
     if (Max_prime_divisor != NULL) delete[] Max_prime_divisor;
     if (Sum_till_index != NULL) delete[] Sum_till_index;
     file_for_analysis.close();
