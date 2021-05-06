@@ -13,10 +13,47 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="TestFiles">
+      <UniqueIdentifier>{5d52c510-5957-430d-8e02-d83565bba8e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MushroomForest 05.05.2021.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="BoostTest.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MushroomForest.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="TestGenerator.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Test_2.txt">
+      <Filter>TestFiles</Filter>
+    </Text>
+    <Text Include="Answer_1.txt">
+      <Filter>TestFiles</Filter>
+    </Text>
+    <Text Include="Answer_2.txt">
+      <Filter>TestFiles</Filter>
+    </Text>
+    <Text Include="Test_1.txt">
+      <Filter>TestFiles</Filter>
+    </Text>
+    <Text Include="Test_3.txt">
+      <Filter>TestFiles</Filter>
+    </Text>
+    <Text Include="Answer_3.txt">
+      <Filter>TestFiles</Filter>
+    </Text>
   </ItemGroup>
 </Project>
