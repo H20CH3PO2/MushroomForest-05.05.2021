@@ -4,18 +4,31 @@
 #include <fstream>
 using namespace std;
 
-void test_generator(const char* name_test, unsigned long long side, unsigned long long querries_count)
+typedef unsigned long long ULL;
+
+void test_generator(const char* name_test, unsigned long long side_x, unsigned long long side_y, unsigned long long querries_count)
 {
-    unsigned long long generate_x, generate_y;
     random_device my_random;
     ofstream file_random_mashroom_forest;
     file_random_mashroom_forest.open(name_test, ios_base::trunc);
-    do {
-        generate_x = (my_random.operator()()) % (side * side) + 1;
-        generate_y = (my_random.operator()()) % (side * side) + 1;
-    } while (generate_x * generate_y > side * side || generate_x < 100 || generate_y < 100);
-    file_random_mashroom_forest << generate_x << " " << generate_y << endl << querries_count << endl;
+    ULL max_side = (side_x > side_y) ? side_x : side_y;
+    unsigned char* tmp_x = new unsigned char[max_side + 1];
+    unsigned char* tmp_y = new unsigned char[max_side + 1];
+    ULL generate_x = 0, generate_y = 0;
+    for (ULL i = 0; i < max_side + 1; i++) {
+        tmp_x[i] = 0; tmp_y[i] = 0;
+    }
+    file_random_mashroom_forest << side_x << " " << side_y << '\n' << querries_count << '\n';
     for (int i = 0; i < querries_count; i++)
-        file_random_mashroom_forest << (my_random.operator()()) % generate_x + 1 << " " << (my_random.operator()()) % generate_y + 1 << endl;
+    {
+        do {
+            tmp_x[generate_x] = 1; tmp_x [generate_y]= 1;
+            generate_x = my_random.operator()() % side_x + 1;
+            generate_y = my_random.operator()() % side_y + 1;
+        } while ((tmp_x[generate_x] !=0 || tmp_x[generate_y] != 0) && generate_x < 2 && generate_y < 2);
+        file_random_mashroom_forest << generate_x << " " << generate_y << '\n';
+    }
     file_random_mashroom_forest.close();
+    if (tmp_x != NULL) delete[] tmp_x;
+    if (tmp_y != NULL) delete[] tmp_y;
 }

@@ -100,7 +100,6 @@ void mushroom_forest(const char* file_name_for_analysis, const char* file_name_f
     unsigned long long max_prime_divisor_sum_till_index_current;
 
     // Мерим время для отладки!
-    system("cls");
     cout << "Building time: " << clock() - start_time << '\n';
 
     // Для отладки

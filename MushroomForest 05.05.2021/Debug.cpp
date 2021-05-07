@@ -4,6 +4,7 @@ using namespace std;
 
 #include"MushroomForest.h"
 #include "TestGenerator.h"
+#include "MushroomForest_alien.h"
 
 int main()
 {
@@ -20,9 +21,10 @@ int main()
      // TODO: Сам придумал, что быстрее обратится к массиву и записать 
      // туда значение или идти в цикле и делать проверку и брать текущее значение инкремента цикла
     cout << "Start test_generator..." << endl;
-    test_generator("Test_4.txt", 2300, 200000);
-    system("cls");
+    test_generator("Test_4.txt", 50, 100000, 200000);
+
     cout << "Start mushroom_forest..." << endl;
+    mushroom_forest_alien("Test_4.txt", "Test_4_after_analysis.txt");
     mushroom_forest("Test_4.txt", "Test_4_after_analysis.txt");
     system("pause>0");
 }

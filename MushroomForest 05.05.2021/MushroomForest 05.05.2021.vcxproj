@@ -168,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MushroomForest.h" />
+    <ClInclude Include="MushroomForest_alien.h" />
     <ClInclude Include="TestGenerator.h" />
   </ItemGroup>
   <ItemGroup>

@@ -46,7 +46,7 @@ unsigned long long* Max_prime_divisor = NULL;
     +    +       +      +      +      +      +      +      +
  F2(7) F2(7)  F2(7)  F2(7)  F2(7)  F2(7)  F2(7)  F2(7)  F2(7)
  *      *       *      *     *      *       *      *     *
- F(1)   F(2)    F(3)   F(4)  F(5)   F(6)    F(7)  F(8)   F(9)
+ F(1) + F(2) +  F(3) + F(4)+ F(5) + F(6) +  F(7) +F(8) + F(9)
  */
  // В массив Sum_till_index складываем на место i сумму чисел от F(1) до F(i)
  // В F1, если max_x > max_y истина, в обратном случае F2
@@ -54,7 +54,7 @@ unsigned long long* Max_prime_divisor = NULL;
 unsigned long long* Sum_till_index = NULL;
 
  // Функция строит Raw_sew методом решета.
-void build_sieve_raw(unsigned long long max_x_y)
+void build_sieve_raw_alien(unsigned long long max_x_y)
 {
     if (Raw_sew != NULL) return;
     Raw_sew = new unsigned char[max_x_y];
@@ -154,7 +154,7 @@ int main()
     max_x_y = ((x_field_range > y_field_range) ? x_field_range : y_field_range);
 
      // Строим массив флагов для простых чисел - Raw_sew, объявлен в строке 4.
-    build_sieve_raw(max_x_y + 1);
+    build_sieve_raw_alien(max_x_y + 1);
 
      // Строим массивы Min_prime_divisor, Max_prime_divisor, Sum_till_index
      // Подробнее о них в комментариях в начале программы.
