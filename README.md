@@ -3,8 +3,6 @@
 # MushroomForest-05.05.2021
 Задача решена. Мне помогли. Решение отличное.
 
-![image](https://user-images.githubusercontent.com/71022195/117329774-a833d600-ae9d-11eb-8dd3-efe79bfd1710.png)
-
 Условие задачи:
 
 F. Грибной лес
