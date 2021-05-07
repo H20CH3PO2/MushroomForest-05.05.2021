@@ -197,7 +197,7 @@ int main()
         }
          // Выводим сумму грибов для текущего запроса
         if (i != queries_count - 1)
-            cout << summa_division_min_prime_devision << endl;
+            cout << summa_division_min_prime_devision << '\n';
         else
             cout << summa_division_min_prime_devision;
     }

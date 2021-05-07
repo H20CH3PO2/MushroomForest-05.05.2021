@@ -101,7 +101,7 @@ void mushroom_forest(const char* file_name_for_analysis, const char* file_name_f
 
     // Мерим время для отладки!
     system("cls");
-    cout << "Building time: " << clock() - start_time << endl;
+    cout << "Building time: " << clock() - start_time << '\n';
 
     // Для отладки
     /*for (int i = 0; i <= max_x_y; i++)
@@ -132,7 +132,7 @@ void mushroom_forest(const char* file_name_for_analysis, const char* file_name_f
                 summa_division_min_prime_devision += max_prime_divisor_sum_till_index_current * Max_prime_divisor[j];
         }
         if (i != queries_count - 1)
-            file_for_answer << summa_division_min_prime_devision << endl;
+            file_for_answer << summa_division_min_prime_devision << '\n';
         else
             file_for_answer << summa_division_min_prime_devision;
 
@@ -147,9 +147,9 @@ void mushroom_forest(const char* file_name_for_analysis, const char* file_name_f
     file_for_answer.close();
     // Мерим время для отладки!
     
-    cout << endl;
-    cout << "Processing time: " << clock() - start_time<<endl;
-    cout << endl;
+    cout << '\n';
+    cout << "Processing time: " << clock() - start_time<< '\n';
+    cout << '\n';
     cout << "Precessing end.";
     // system("pause>0");
 }
